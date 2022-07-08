@@ -1,7 +1,9 @@
 .PHONY: *
 
-install:
-	python3 setup.py install
+clean:
+	rm -rf build
+	rm -rf dist
+	rm -rf *.egg-info
 
-build:
-	python3 setup.py sdist bdist_wheel
+install: clean
+	pip install -e .
