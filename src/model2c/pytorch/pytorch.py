@@ -19,4 +19,4 @@ def convert(model, input_size):
 
 
     # convert to c
-    os.system("onnx2c model.onnx model.c")
+    os.system("onnx2c model.onnx model.c") 
