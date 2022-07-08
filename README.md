@@ -40,6 +40,22 @@ export PATH=$PATH:/path/to/onnx2c/folder
 
 ### Usage
 
+Train a model with correponding data until sufficient metrics are obtained.
+
+```py
+import model2c.pytorch import convert
+
+# set the model to inference mode
+torch_model.eval()
+
+# Input to the model
+x = torch.randn(batch_size, 1, 224, 224, requires_grad=True)
+torch_out = torch_model(x)
+
+# run convertor
+convert(model=torch_model, input_shape=(batch_size, 1, 224, 224))
+print(f"size of output model: {os.path.getsize('model.c')/1024} kilobytes")
+```
 
 ## Support
 
