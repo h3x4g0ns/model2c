@@ -32990,7 +32990,7 @@ static const int64_t tensor_onnx__Reshape_16[6] =
 static const int64_t tensor_onnx__Reshape_19[4] = 
 {-1, 1, 672, 672};
 union tensor_union_0 {
-float tensor_input[1][64][224][224];
+float tensor_input_1[1][64][224][224];
 float tensor_input_8[1][64][224][224];
 float tensor_input_16[1][32][224][224];
 float tensor_onnx__Reshape_15[1][9][224][224];
@@ -33042,10 +33042,10 @@ static inline void node_Conv_0( const float x[1][1][224][224], const float w[64]
 	} /* b */
 }
 
-static inline void node_Relu_1( const float tensor_input[1][64][224][224], float tensor_input_4[1][64][224][224] )
+static inline void node_Relu_1( const float tensor_input_1[1][64][224][224], float tensor_input_4[1][64][224][224] )
 {
 	/*Relu*/
-	float *X = (float*)tensor_input;
+	float *X = (float*)tensor_input_1;
 	float *Y = (float*)tensor_input_4;
 	for( uint32_t i=0; i<3211264; i++ )
 		Y[i] = X[i] > 0 ? X[i] : 0;
@@ -33221,20 +33221,20 @@ static inline void node_Constant_10( const int64_t tensor_onnx__Reshape_19[4] )
 	(void)tensor_onnx__Reshape_19;
 }
 
-static inline void node_Reshape_11( const float tensor_onnx__Reshape_18[1][1][224][3][224][3], const int64_t tensor_onnx__Reshape_19[4], float tensor_20[1][1][672][672] )
+static inline void node_Reshape_11( const float tensor_onnx__Reshape_18[1][1][224][3][224][3], const int64_t tensor_onnx__Reshape_19[4], float tensor_output[1][1][672][672] )
 {
 	/*Reshape*/
 	float *data = (float*)tensor_onnx__Reshape_18;
-	float *reshaped = (float*)tensor_20;
+	float *reshaped = (float*)tensor_output;
 	for( uint32_t i=0; i<451584; i++ )
 		reshaped[i] = data[i];
 
 }
 
 
-void entry(const float tensor_input_1[1][1][224][224], float tensor_20[1][1][672][672]) {
-	node_Conv_0( tensor_input_1, tensor_conv1_weight, tensor_conv1_bias, tu0.tensor_input);
-	node_Relu_1( tu0.tensor_input, tu1.tensor_input_4);
+void entry(const float tensor_input[1][1][224][224], float tensor_output[1][1][672][672]) {
+	node_Conv_0( tensor_input, tensor_conv1_weight, tensor_conv1_bias, tu0.tensor_input_1);
+	node_Relu_1( tu0.tensor_input_1, tu1.tensor_input_4);
 	node_Conv_2( tu1.tensor_input_4, tensor_conv2_weight, tensor_conv2_bias, tu0.tensor_input_8);
 	node_Relu_3( tu0.tensor_input_8, tu1.tensor_input_12);
 	node_Conv_4( tu1.tensor_input_12, tensor_conv3_weight, tensor_conv3_bias, tu0.tensor_input_16);
@@ -33244,5 +33244,5 @@ void entry(const float tensor_input_1[1][1][224][224], float tensor_20[1][1][672
 	node_Reshape_8( tu0.tensor_onnx__Reshape_15, tensor_onnx__Reshape_16, tu1.tensor_onnx__Transpose_17);
 	node_Transpose_9( tu1.tensor_onnx__Transpose_17, tu0.tensor_onnx__Reshape_18);
 	node_Constant_10( tensor_onnx__Reshape_19);
-	node_Reshape_11( tu0.tensor_onnx__Reshape_18, tensor_onnx__Reshape_19, tensor_20);
+	node_Reshape_11( tu0.tensor_onnx__Reshape_18, tensor_onnx__Reshape_19, tensor_output);
 }
