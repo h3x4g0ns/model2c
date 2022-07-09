@@ -1,6 +1,6 @@
 *.venv
 *.egg-info
-*build
-*dist
+build/
+dist/
 *.pyc
 *.onnx
