@@ -59,6 +59,7 @@ make install
 Train a model with correponding data until sufficient metrics are obtained.
 
 ```py
+import torch
 import model2c.pytorch import convert
 
 # set the model to inference mode
