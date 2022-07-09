@@ -38,6 +38,22 @@ And finally add to path
 export PATH=$PATH:/path/to/onnx2c/folder
 ```
 
+## Installation 
+
+You can can install the package through `pypi`:
+
+```sh
+pip install model2c
+```
+
+Or you can clone the repo and build directly from source:
+
+```sh
+git clone git@github.com:h3x4g0ns/model2c.git
+cd model2c
+make install
+```
+
 ### Usage
 
 Train a model with correponding data until sufficient metrics are obtained.
