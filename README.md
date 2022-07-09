@@ -62,13 +62,6 @@ Train a model with correponding data until sufficient metrics are obtained.
 import torch
 import model2c.pytorch import convert
 
-# set the model to inference mode
-torch_model.eval()
-
-# Input to the model
-x = torch.randn(batch_size, 1, 224, 224, requires_grad=True)
-torch_out = torch_model(x)
-
 # run convertor
 convert(model=torch_model, input_shape=(batch_size, 1, 224, 224))
 print(f"size of output model: {os.path.getsize('model.c')/1024} kilobytes")
@@ -78,4 +71,11 @@ print(f"size of output model: {os.path.getsize('model.c')/1024} kilobytes")
 
 `model2c` currently supports the following ML frameworks
 - `torch`
-- `keras`
+- `tf/keras`
+
+## To Do
+
+- [x] `torch` convert
+- [ ] `tf` convert
+- [ ] make command line utility
+- [ ] include dynamic axis for batch size
