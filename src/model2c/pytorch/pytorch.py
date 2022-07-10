@@ -7,6 +7,10 @@ def convert(model, input_size):
 
     .py -> torch -> onnx -> .c
     """
+    # checks
+    assert isinstance(model, torch.nn.Module), f"model must be torch.nn.Module, instead got {type(model)}"
+    assert isinstance(input_size, tuple), f"input_size must be tuple, instead got {type(input_size)}"
+
     # set model to inference mode
     model.cpu().eval()
 
