@@ -8,9 +8,11 @@ Python API and Command Line tool to convert ML models into low-level inference f
 
 ### Prerequisites
 
-Make sure you have `onnx2c` installed and added to `PATH`.
+Make sure you have `tensorflow tf2onnx` or `torch` installed.
 
-Make sure you have ProtocolBuffers libraries installed, e.g.:
+Furthermore, make sure you have `onnx2c` installed and added to `PATH`.
+
+Lastly you need ProtocolBuffers libraries installed, e.g.:
 
 - Ubuntu: `apt install libprotobuf-dev protobuf-compiler`
 - MacOS: `brew install protobuf`
