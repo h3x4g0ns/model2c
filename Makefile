@@ -7,3 +7,9 @@ clean:
 
 install: clean
 	pip install -e .
+
+build: install
+	python -m build
+
+publish: build
+	python3 -m twine upload dist/*
