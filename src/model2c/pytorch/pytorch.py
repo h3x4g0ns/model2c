@@ -1,7 +1,7 @@
 import torch, torch.onnx
 import os
 
-def convert(model, input_size):
+def convert(model, input_size, quantization="fp32"):
     """
     Converts given trained torch model into `.c` file that can used for inference
 
@@ -11,11 +11,12 @@ def convert(model, input_size):
     assert isinstance(model, torch.nn.Module), f"model must be torch.nn.Module, instead got {type(model)}"
     assert isinstance(input_size, tuple), f"input_size must be tuple, instead got {type(input_size)}"
 
-    # set model to inference mode
-    model.cpu().eval()
+    # quantization
+    model.cpu()
+    x = quantize(model, quantization, input_size)
 
-    # input to the model
-    x = torch.randn(input_size, requires_grad=True)
+    # set model to inference mode
+    model.eval()
 
     # convert to onnx
     torch.onnx.export(model,           # model being run
@@ -32,3 +33,18 @@ def convert(model, input_size):
 
     # convert to c
     os.system("onnx2c model.onnx > model.c") 
+
+def quantize(model, quantization, input_size):
+    """
+    Quantization of the model
+    """
+    if quantization == "fp32":
+        return torch.randn(input_size, requires_grad=True)
+    elif quantization == "fp16":
+        model.half()
+        return torch.randn(input_size, requires_grad=True).half()
+    elif quantization == "int8":
+        model.int8()
+        return torch.randn(input_size, requires_grad=True).int8()
+    else:
+        raise ValueError(f"quantization must be one of 'fp32', 'fp16', 'int8', instead got {quantization}")
