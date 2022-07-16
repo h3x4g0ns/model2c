@@ -1,5 +1,10 @@
 # model2c
 
+![Build](https://github.com/h3x4g0ns/model2c/actions/workflows/python-publish.yml/badge.svg)
+[![PyPI version](https://badge.fury.io/py/model2c.svg)](https://badge.fury.io/py/model2c)
+![build](https://img.shields.io/github/workflow/status/h3x4g0ns/model2c/pypi-build)
+
+
 ## About the Project
 
 Python API and Command Line tool to convert ML models into low-level inference for embedded platforms
