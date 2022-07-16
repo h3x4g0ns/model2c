@@ -67,7 +67,8 @@ import model2c.pytorch import convert
 # run convertor
 convert(model=torch_model, 
         input_shape=(batch_size, 1, 224, 224),
-        quantization="fp32")
+        quantization="fp32",
+        output_file="model.c")
 print(f"size of output model: {os.path.getsize('model.c')/1024} kilobytes")
 ```
 
@@ -80,6 +81,6 @@ print(f"size of output model: {os.path.getsize('model.c')/1024} kilobytes")
 ## To Do
 
 - [x] `torch` convert
-- [ ] `tf` convert
+- [x] `tf` convert
 - [ ] make command line utility
 - [ ] include dynamic axis for batch size
