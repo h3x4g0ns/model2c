@@ -66,8 +66,8 @@ import model2c.pytorch import convert
 
 # run convertor
 convert(model=torch_model, 
-				input_shape=(batch_size, 1, 224, 224),
-				quantization="fp32")
+        input_shape=(batch_size, 1, 224, 224),
+        quantization="fp32")
 print(f"size of output model: {os.path.getsize('model.c')/1024} kilobytes")
 ```
 
