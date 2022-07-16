@@ -1,7 +1,7 @@
 import torch, torch.onnx
 import os
 
-def convert(model, input_size, quantization="fp32"):
+def convert(model, input_size, quantization="fp32", output_file="model.c"):
     """
     Converts given trained torch model into `.c` file that can used for inference
 
@@ -32,7 +32,7 @@ def convert(model, input_size, quantization="fp32"):
 
 
     # convert to c
-    os.system("onnx2c model.onnx > model.c") 
+    os.system(f"onnx2c model.onnx > {output_file}")
 
 def quantize(model, quantization, input_size):
     """
