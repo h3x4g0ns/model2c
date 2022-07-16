@@ -1,8 +1,7 @@
 # model2c
 
-![Build](https://github.com/h3x4g0ns/model2c/actions/workflows/python-publish.yml/badge.svg)
+![pypi build](https://img.shields.io/github/workflow/status/h3x4g0ns/model2c/pypi-build)
 [![PyPI version](https://badge.fury.io/py/model2c.svg)](https://badge.fury.io/py/model2c)
-![build](https://img.shields.io/github/workflow/status/h3x4g0ns/model2c/pypi-build)
 
 
 ## About the Project
