@@ -5,10 +5,10 @@ clean:
 	rm -rf dist
 	rm -rf *.egg-info
 
-install: clean
+install:
 	pip install -e .
 
-build: install
+build:
 	python -m build
 
 publish: build
